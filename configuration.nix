@@ -156,6 +156,7 @@ programs = {
    gopls
    lazygit
    htop
+   gparted
   ];
   
 fonts.packages = with pkgs; [
