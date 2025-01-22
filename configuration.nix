@@ -25,6 +25,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 
   # Set your time zone.
   time.timeZone = "Africa/Cairo";
@@ -157,6 +159,8 @@ programs = {
    lazygit
    htop
    gparted
+   polkit 
+   polkit_gnome
   ];
   
 fonts.packages = with pkgs; [
@@ -165,6 +169,7 @@ fonts.packages = with pkgs; [
 ];
 
   environment.sessionVariables = {
+    POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     XDG_SESSION_TYPE = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
