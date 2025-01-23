@@ -81,15 +81,15 @@ services.dbus.enable = true;
 services.gvfs.enable = true;
 
 programs = {
-	hyprland = {
-		enable = true;
-		xwayland = {
-			enable = true;
-		};
-	};
-	waybar = {
-		enable = true;
-	};
+  hyprland = {
+    enable = true;
+    xwayland = {
+      enable = true;
+    };
+  };
+  waybar = {
+    enable = true;
+  };
 };
 
 
@@ -161,6 +161,8 @@ programs = {
    gparted
    polkit 
    polkit_gnome
+   grim
+   hyprpicker
   ];
   
 fonts.packages = with pkgs; [
