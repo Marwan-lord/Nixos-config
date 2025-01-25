@@ -135,12 +135,8 @@ programs = {
    libgcc
    gcc
    vlc
-   geeqie
-   font-awesome
    btop
-   nerdfonts
    fzf
-   ghostty
    foot
    ripgrep
    fzf
@@ -158,11 +154,12 @@ programs = {
    gopls
    lazygit
    htop
-   gparted
    polkit 
    polkit_gnome
    grim
-   hyprpicker
+   gdb
+   nasm
+   imhex
   ];
   
 fonts.packages = with pkgs; [
