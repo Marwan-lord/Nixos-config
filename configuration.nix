@@ -160,6 +160,12 @@ programs = {
    gdb
    nasm
    imhex
+   qt5.qtwayland
+   qt6.qmake
+   qt6.qtwayland
+   pipewire
+   wireplumber
+   hyprpolkitagent
   ];
   
 fonts.packages = with pkgs; [
