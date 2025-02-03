@@ -15,6 +15,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.tlp.enable = true;
+  hardware.graphics.enable  = true;
+  hardware.graphics.enable32Bit = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -92,6 +94,15 @@ programs = {
   };
 };
 
+programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+};
+
+programs.steam.gamescopeSession.enable = true;
+programs.gamemode.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -99,7 +110,7 @@ programs = {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+   vim-full # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
    wget
    kitty
    polkit_gnome
@@ -166,6 +177,14 @@ programs = {
    pipewire
    wireplumber
    hyprpolkitagent
+   gnumake
+   ccls
+   cmake
+   neovim
+   hexyl
+   unzip
+   tlrc
+   sdl3
   ];
   
 fonts.packages = with pkgs; [
@@ -174,7 +193,7 @@ fonts.packages = with pkgs; [
 ];
 
   environment.sessionVariables = {
-    POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    LD_LIBRARY_PATH="~/.steam/bin32";
     XDG_SESSION_TYPE = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
